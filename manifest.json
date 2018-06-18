@@ -5,9 +5,17 @@
   "version": "0.0.1",
   "description": "Caller in chat for discord",
   "icons": {"16": "icon_16.png"},
-  "content_scripts": [{
-    "js": ["content.js"],
-    "matches": ["https://discordapp.com/channels/*"],
-    "exclude_matches": ["https://discordapp.com/channels/@me/*"]
-  }]
+  "permissions": [
+    "activeTab",
+    "contextMenus"
+  ],
+  "background": {
+    "scripts": ["content.js"]
+  },
+  "browser_action": {
+    "default_icon": {
+      "16" : "icon_16.png"
+    },
+    "default_title": "Whereami?"
+  }
 }
