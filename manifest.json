@@ -1,0 +1,13 @@
+{
+  "manifest_version": 2,
+ 
+  "name": "DiscordCaller",
+  "version": "0.0.1",
+  "description": "Caller in chat for discord",
+  "icons": {"16": "icon_16.png"},
+  "content_scripts": [{
+    "js": ["content.js"],
+    "matches": ["https://discordapp.com/channels/*"],
+    "exclude_matches": ["https://discordapp.com/channels/@me/*"]
+  }]
+}
