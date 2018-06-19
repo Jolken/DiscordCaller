@@ -6,8 +6,7 @@
   "description": "Caller in chat for discord",
   "icons": {"16": "icon_16.png"},
   "permissions": [
-    "activeTab",
-    "contextMenus"
+    "activeTab"
   ],
   "background": {
     "scripts": ["content.js"]
