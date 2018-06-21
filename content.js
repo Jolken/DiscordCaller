@@ -1,6 +1,5 @@
 var action = 'modify';
 function request(tabs) {
-    console.log(tabs);
     browser.tabs.sendMessage(tabs[0].id, {
         'action': action
     });
