@@ -1,3 +1,4 @@
+var checkboxes = [];
 function identifyRequest(request, sender, sendResponse){
     if (request.action == 'modify') {
         modify(getCheckboxesArea());
@@ -5,6 +6,7 @@ function identifyRequest(request, sender, sendResponse){
     else if(request.action == 'call') {
         call(getCheckboxesArea());
     }
+    browser.runtime.onMessage.removeListener(identifyRequest);
 }
 
 function getCheckboxesArea() {
@@ -12,21 +14,22 @@ function getCheckboxesArea() {
     let chats = document.querySelectorAll('.containerDefault-1ZnADq');
     chats.forEach((chat) => {
         if (chat.childNodes[0].childNodes[0].childNodes[0].innerHTML.includes('Voice')) {
-            checkboxes.push(chat.childNodes[0].childNodes[0].childNodes[0].childNodes[1]);
+            checkboxes.push(chat.childNodes[0].childNodes[0].childNodes[0]);
         }
     });
-    console.log(chats);
-    return checkboxes.filter(checkbox => checkbox)
+    return checkboxes.filter(checkbox => checkbox);
 }
 
 function modify (checkboxesArea) {
     checkboxesArea.forEach((el) => {
-        el.innerHTML += '<input type="checkbox">';
+        if (!el.innerHTML.includes('input')) {
+            el.innerHTML += '<input type="checkbox">';
+        }
     });
 }
 
 function call(checkboxesArea) {
-    checkboxesArea.filter(checkbox => checkbox.checked);
+    checkboxesArea.filter(checkboxArea => checkboxArea.childNodes[1].checked).forEach((element) => {element.click();console.log});
 }
 
 browser.runtime.onMessage.addListener(identifyRequest)
