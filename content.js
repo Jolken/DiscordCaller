@@ -1,4 +1,4 @@
-var action = 'modify';
+var action = 'call';
 function request(tabs) {
     browser.tabs.sendMessage(tabs[0].id, {
         'action': action
