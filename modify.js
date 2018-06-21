@@ -17,7 +17,7 @@ function getCheckboxesArea() {
             checkboxes.push(chat.childNodes[0].childNodes[0].childNodes[0]);
         }
     });
-    return checkboxes.filter(checkbox => checkbox)
+    return checkboxes.filter(checkbox => checkbox);
 }
 
 function modify (checkboxesArea) {
@@ -29,7 +29,7 @@ function modify (checkboxesArea) {
 }
 
 function call(checkboxesArea) {
-    checkboxesArea.filter(checkboxArea => checkboxArea.childNodes[1].checked).forEach((element) => {element.click()});
+    checkboxesArea.filter(checkboxArea => checkboxArea.childNodes[1].checked).forEach((element) => {element.click();console.log});
 }
 
 browser.runtime.onMessage.addListener(identifyRequest)
