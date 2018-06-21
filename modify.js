@@ -29,7 +29,7 @@ function modify (checkboxesArea) {
 }
 
 function call(checkboxesArea) {
-    checkboxesArea.filter(checkboxArea => checkboxArea.childNodes[1].checked).forEach((element) => {element.click();console.log});
+    checkboxesArea.filter(checkboxArea => checkboxArea.childNodes[1].checked).forEach((element) => {element.click();});
 }
 
 browser.runtime.onMessage.addListener(identifyRequest)
