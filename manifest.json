@@ -1,13 +1,13 @@
 {
   "manifest_version": 2,
  
-  "name": "DiscordCaller",
+  "name": "DisCall",
   "version": "0.0.1",
-  "description": "Caller in chat for discord",
+  "description": "Discord caller",
   "icons": {"16": "icon_16.png"},
   "permissions": [
     "activeTab",
-    "<all_urls>"
+    "contextMenus"
   ],
   "background": {
     "scripts": ["content.js"]
@@ -16,6 +16,6 @@
     "default_icon": {
       "16" : "icon_16.png"
     },
-    "default_title": "Whereami?"
+    "default_title": "DisCall"
   }
 }

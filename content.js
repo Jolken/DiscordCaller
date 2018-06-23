@@ -6,6 +6,26 @@ function request(tabs) {
     });
 }
 
+browser.contextMenus.create({
+    id: "discord-modify",
+    title: "modify"
+});
+browser.contextMenus.create({
+    id: "discord-call",
+    title: "call"
+});
+
+browser.contextMenus.onClicked.addListener((target) => {
+    switch (target.menuItemId) {
+        case "discord-modify":
+            action = "modify";
+            break;
+        case "discord-call":
+            action = "call";
+            break;
+    }
+});
+
 browser.browserAction.onClicked.addListener((tab) => {
     browser.tabs.executeScript({
         file: './modify.js'
@@ -15,7 +35,4 @@ browser.browserAction.onClicked.addListener((tab) => {
         currentWindow: true
     });
     querying.then(request);
-});
-browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    console.log(message);
 });

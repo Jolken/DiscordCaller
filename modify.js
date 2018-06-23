@@ -10,14 +10,18 @@ function identifyRequest(request, sender, sendResponse){
 }
 
 function getCheckboxesArea() {
+
     var checkboxes = [];
     let chats = document.querySelectorAll('.containerDefault-1ZnADq');
     chats.forEach((chat) => {
-        if (chat.childNodes[0].childNodes[0].childNodes[0].innerHTML.includes('Voice')) {
-            checkboxes.push(chat.childNodes[0].childNodes[0].childNodes[0]);
+        if (chat.childNodes[0].childNodes[0].childNodes[0]) {
+            if (chat.childNodes[0].childNodes[0].childNodes[0].innerHTML.includes('Voice')) {
+                checkboxes.push(chat.childNodes[0].childNodes[0].childNodes[0]);
+        }
         }
     });
     return checkboxes.filter(checkbox => checkbox);
+
 }
 
 function modify (checkboxesArea) {
@@ -29,7 +33,7 @@ function modify (checkboxesArea) {
 }
 
 function call(checkboxesArea) {
-    checkboxesArea.filter(checkboxArea => checkboxArea.childNodes[1].checked).forEach((element) => {element.click();});
+    checkboxesArea.filter(checkboxArea => checkboxArea.childNodes[1].checked).forEach((element) => {element.click();}).forEach((element) => {element.click();});
 }
 
 browser.runtime.onMessage.addListener(identifyRequest)
