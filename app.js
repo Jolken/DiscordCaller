@@ -28,7 +28,7 @@ browser.contextMenus.onClicked.addListener((target) => {
 
 browser.browserAction.onClicked.addListener((tab) => {
     browser.tabs.executeScript({
-        file: './modify.js'
+        file: './discord.js'
     });
     var querying = browser.tabs.query({
         active: true,
