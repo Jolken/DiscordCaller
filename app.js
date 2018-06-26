@@ -1,5 +1,8 @@
+//call or modify
 var action = 'modify';
-function request(tabs) {
+
+//sends action to script
+function discord(tabs) {
     browser.tabs.sendMessage(tabs[0].id, {
         'action': action
     });
@@ -33,5 +36,5 @@ browser.browserAction.onClicked.addListener((tab) => {
         active: true,
         currentWindow: true
     });
-    querying.then(request);
+    querying.then(discord);
 });

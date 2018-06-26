@@ -1,4 +1,3 @@
-var checkboxes = [];
 function identifyRequest(request, sender, sendResponse){
     if (request.action == 'modify') {
         modify(getCheckboxesArea());
@@ -10,28 +9,28 @@ function identifyRequest(request, sender, sendResponse){
 }
 
 function getCheckboxesArea() {
-
     var checkboxes = [];
     let chats = document.querySelectorAll('.containerDefault-1ZnADq');
     chats.forEach((chat) => {
-        if (chat.childNodes[0].childNodes[0].childNodes[0]) {
-            if (chat.childNodes[0].childNodes[0].childNodes[0].innerHTML.includes('Voice')) {
-                checkboxes.push(chat.childNodes[0].childNodes[0].childNodes[0]);
+        let area = chat.childNodes[0].childNodes[0].childNodes[0];//place where add checkbox 
+        if (area) {
+            if (area.innerHTML.includes('Voice')) {
+                checkboxes.push(area);
         }
         }
     });
-    return checkboxes.filter(checkbox => checkbox);
+    return checkboxes.filter(checkbox => checkbox); //filter undefined
 
 }
-
-function modify (checkboxesArea) {
-    checkboxesArea.forEach((el) => {
-        if (!el.innerHTML.includes('input')) {
-            el.innerHTML += '<input type="checkbox">';
+//adds checkboxes in voice chats
+function modify(checkboxesArea) {
+    checkboxesArea.forEach((area) => {
+        if (!area.innerHTML.includes('input')) {
+            area.innerHTML += '<input type="checkbox">';
         }
     });
 }
-
+//clicks twice on each checked checkbox
 function call(checkboxesArea) {
     checkboxesArea.filter(checkboxArea => checkboxArea.childNodes[1].checked).forEach((element) => {element.click();}).forEach((element) => {element.click();});
 }
