@@ -10,11 +10,11 @@ function discord(tabs) {
 
 browser.contextMenus.create({
     id: "discord-modify",
-    title: "modify"
+    title: "Modify"
 });
 browser.contextMenus.create({
     id: "discord-call",
-    title: "call"
+    title: "Call"
 });
 
 browser.contextMenus.onClicked.addListener((target) => {
@@ -30,7 +30,7 @@ browser.contextMenus.onClicked.addListener((target) => {
 
 browser.browserAction.onClicked.addListener((tab) => {
     browser.tabs.executeScript({
-        file: './discord.js'
+        file: 'scripts/discord.js'
     });
     var querying = browser.tabs.query({
         active: true,
